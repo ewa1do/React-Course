@@ -1,14 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
-const greeting = <h1>Hello World!</h1>;
+import ReactDOM from 'react-dom/client';
+import PrimeraApp from './PrimeraApp';
+import './main.css';
 
 const root = document.getElementById('root');
 
-console.log(root);
-
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    <h1>{greeting}</h1>
+    <PrimeraApp />
   </React.StrictMode>
 );
