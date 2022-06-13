@@ -1,19 +1,19 @@
-// import React, { Fragment } from 'react';
 import React from 'react';
+// ? PropTypes are used to define features such as types or requirements on the props
+import PropTypes from 'prop-types';
+// import React, { Fragment } from 'react';
 
-const PrimeraApp = ({ greeting = 'Hello' }) => {
-  const info = {
-    name: 'Eduardo',
-    age: 24,
-  };
-
+const PrimeraApp = ({ greeting }) => {
   return (
     <>
       <h1>{greeting}</h1>
-      {/* <pre>{JSON.stringify(info, null, 3)}</pre> */}
       <h2>My first app</h2>
     </>
   );
+};
+
+PrimeraApp.propTypes = {
+  greeting: PropTypes.string.isRequired,
 };
 
 export default PrimeraApp;

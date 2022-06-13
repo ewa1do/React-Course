@@ -7,6 +7,6 @@ const root = document.getElementById('root');
 
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    <PrimeraApp greeting="Hello World from the Props!" />
+    <PrimeraApp greeting="Hello world!" />
   </React.StrictMode>
 );
