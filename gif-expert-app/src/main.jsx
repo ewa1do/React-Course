@@ -1,10 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+import GifExperApp from './GifExpertApp';
+
+import './index.css';
+
+ReactDOM.createRoot(document.querySelector('#app')).render(
   <React.StrictMode>
-    <App />
+    <GifExperApp />
   </React.StrictMode>
-)
+);
