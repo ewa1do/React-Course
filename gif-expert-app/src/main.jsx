@@ -6,7 +6,5 @@ import GifExperApp from './GifExpertApp';
 import './index.css';
 
 ReactDOM.createRoot(document.querySelector('#app')).render(
-  <React.StrictMode>
-    <GifExperApp />
-  </React.StrictMode>
+  <GifExperApp />
 );
