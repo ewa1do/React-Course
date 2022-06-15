@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 import React from 'react';
+import '@testing-library/jest-dom/extend-expect.js';
 import { render } from '@testing-library/react';
 import PrimeraApp from '../PrimeraApp';
 
