@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import GifGridItem from './GifGridItem';
 
 const GifGrid = ({ category }) => {
   const API_KEY = 'q8pcPASKm5fYWreOQ8KmcuvaYHBWd5ug';
   const SEARCH_URL = 'https://api.giphy.com/v1/gifs/search?';
 
   const transformQuery = (query) => query.split(' ').join('+');
+
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     getGifs(SEARCH_URL);
@@ -28,11 +31,15 @@ const GifGrid = ({ category }) => {
     });
 
     console.log(gifs);
+    setImages(gifs);
   };
 
   return (
     <div>
       <h3> {category} </h3>
+      {images.map((img) => (
+        <GifGridItem key={img.id} {...img} />
+      ))}
     </div>
   );
 };
