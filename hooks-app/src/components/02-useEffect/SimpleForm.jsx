@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Message from './Message';
 
 import './effects.css';
 
@@ -16,15 +17,15 @@ const SimpleForm = () => {
   const { name, email } = formState;
 
   useEffect(() => {
-    console.log('Hey!');
+    // console.log('Hey!');
   }, []); // * the empty []: the effect only is applied once
 
   useEffect(() => {
-    console.log('formState changed');
+    // console.log('formState changed');
   }, [formState]); // * the [state] the effect only applies changes on the state inside the []
 
   useEffect(() => {
-    console.log('email Changed');
+    // console.log('email Changed');
   }, [email]);
 
   const handleInputChange = ({ target }) => {
@@ -60,6 +61,8 @@ const SimpleForm = () => {
           onChange={handleInputChange}
         />
       </div>
+
+      {name === '123' && <Message />}
     </>
   );
 };
