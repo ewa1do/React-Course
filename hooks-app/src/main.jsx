@@ -5,7 +5,8 @@ import ReactDOM from 'react-dom/client';
 // import SimpleForm from './components/02-useEffect/SimpleForm';
 // import HookApp from './HookApp';
 // import FormWithCustomHook from './components/02-useEffect/FormWithCustomHook';
-import MultipleCustomHooks from './components/examples/MultipleCustomHooks';
+// import MultipleCustomHooks from './components/examples/MultipleCustomHooks';
+import FocusScreen from './components/04-useRef/FocusScreen';
 
 ReactDOM.createRoot(document.getElementById('app')).render(
   // <HookApp />
@@ -13,5 +14,6 @@ ReactDOM.createRoot(document.getElementById('app')).render(
   // <CounterWithCustomHook />
   // <SimpleForm />
   // <FormWithCustomHook />
-  <MultipleCustomHooks />
+  // <MultipleCustomHooks />
+  <FocusScreen />
 );
