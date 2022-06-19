@@ -13,9 +13,34 @@ const initialState = [
 ];
 
 const TodoApp = () => {
-  const [todos] = useReducer(todoReducer, initialState);
+  const [todos, dispatch] = useReducer(
+    todoReducer,
+    initialState
+  );
 
-  console.log(todos);
+  // console.log(todos);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // console.log('nueva tarea: ');
+
+    const newTodo = {
+      id: new Date().getTime(),
+      desc: 'Nueva Tarea',
+      done: false,
+    };
+
+    const action = {
+      type: 'add',
+      payload: newTodo,
+    };
+
+    // ? El dispatch es una funcion que se le envia una accion al reducer
+    // * cuando cambia el state el dispatch redibuja el cambio
+
+    dispatch(action);
+  };
 
   return (
     <div>
@@ -50,7 +75,7 @@ const TodoApp = () => {
           <h4>Agregar TODO</h4>
           <hr />
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type='text'
               name='description'
@@ -59,7 +84,10 @@ const TodoApp = () => {
               className='form-control'
             />
 
-            <button className='btn btn-outline-primary mt-2 btn-block'>
+            <button
+              type='submit'
+              className='btn btn-outline-primary mt-2 btn-block'
+            >
               Agregar
             </button>
           </form>
