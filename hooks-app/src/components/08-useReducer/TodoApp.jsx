@@ -1,6 +1,8 @@
 import React, { useEffect, useReducer } from 'react';
 
 import todoReducer from './todoReducer';
+import TodoList from './TodoList';
+
 import useForm from '../../hooks/useForm';
 
 import './styles.css';
@@ -73,30 +75,11 @@ const TodoApp = () => {
 
       <div className='row'>
         <div className='col-7'>
-          <ul className='list-group'>
-            {todos.map(({ id, desc, done }, i) => {
-              return (
-                <li
-                  key={id}
-                  className='list-group-item'
-                >
-                  <p
-                    className={` ${done && 'completed'} `}
-                    onClick={() => handleToggle(id)}
-                  >
-                    {i + 1}. {desc}
-                  </p>
-
-                  <button
-                    className='btn btn-danger'
-                    onClick={() => handleDelete(id)}
-                  >
-                    Borrar
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+          <TodoList
+            todos={todos}
+            handleDelete={handleDelete}
+            handleToggle={handleToggle}
+          />
         </div>
 
         <div className='col-5'>
