@@ -13,7 +13,8 @@ import ReactDOM from 'react-dom/client';
 // import MemoHook from './components/06-memos/MemoHook';
 // import CallbackHook from './components/06-memos/CallbackHook';
 // import { Padre } from './components/07-tarea-memo/Padre';
-import TodoApp from './components/08-useReducer/TodoApp';
+// import TodoApp from './components/08-useReducer/TodoApp';
+import MainApp from './components/09-useContext/MainApp';
 
 ReactDOM.createRoot(document.getElementById('app')).render(
   // <HookApp />
@@ -29,7 +30,8 @@ ReactDOM.createRoot(document.getElementById('app')).render(
   // <MemoHook />
   // <CallbackHook />
   // <Padre />
-  <TodoApp />
+  // <TodoApp />
+  <MainApp />
 );
 
 // import './components/08-useReducer/intro-reducer.js';
