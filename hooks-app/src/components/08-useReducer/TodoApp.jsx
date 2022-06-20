@@ -33,6 +33,13 @@ const TodoApp = () => {
     dispatch(action);
   };
 
+  const handleToggle = (todoId) => {
+    dispatch({
+      type: 'toggle',
+      payload: todoId,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -67,13 +74,16 @@ const TodoApp = () => {
       <div className='row'>
         <div className='col-7'>
           <ul className='list-group'>
-            {todos.map(({ id, desc }, i) => {
+            {todos.map(({ id, desc, done }, i) => {
               return (
                 <li
                   key={id}
                   className='list-group-item'
                 >
-                  <p className='text-center'>
+                  <p
+                    className={` ${done && 'completed'} `}
+                    onClick={() => handleToggle(id)}
+                  >
                     {i + 1}. {desc}
                   </p>
 
