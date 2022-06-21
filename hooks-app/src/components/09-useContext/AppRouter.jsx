@@ -6,6 +6,7 @@ import {
   Route,
 } from 'react-router-dom';
 
+import NavBar from './NavBar';
 import AboutScreen from './AboutScreen';
 import HomeScreen from './HomeScreen';
 import LoginScreen from './LoginScreen';
@@ -14,6 +15,8 @@ const AppRouter = () => {
   return (
     <Router>
       <div>
+        <NavBar />
+
         <Routes>
           <Route
             exact
@@ -31,6 +34,12 @@ const AppRouter = () => {
             exact
             path='/login'
             element={<LoginScreen />}
+          />
+
+          {/* <Route element={<HomeScreen />} /> */}
+          <Route
+            path='*'
+            element={<HomeScreen />}
           />
         </Routes>
       </div>
