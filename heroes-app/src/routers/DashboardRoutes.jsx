@@ -27,8 +27,8 @@ const DashboardRoutes = () => {
             element={<SearchScreen />}
           />
 
-          <Route
-            path='hero'
+          <Route // * le pasamos un parametro al url
+            path='hero/:heroeId'
             element={<HeroScreen />}
           />
 
