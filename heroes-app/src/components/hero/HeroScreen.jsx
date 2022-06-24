@@ -1,5 +1,6 @@
 // * con el hook useParams tenemos acceso a los parametros de una url
 // * el Navigate cambia la ubicacion de la pagina
+import { useMemo } from 'react';
 import {
   useParams,
   Navigate,
@@ -9,7 +10,10 @@ import getHeroById from '../../helpers/getHeroById';
 
 const HeroScreen = () => {
   const { heroeId } = useParams();
-  const hero = getHeroById(heroeId);
+
+  const hero = useMemo(() => {
+    return getHeroById(heroeId);
+  }, [heroeId]);
 
   const navigate = useNavigate();
 
