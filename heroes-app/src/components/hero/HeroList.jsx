@@ -9,7 +9,7 @@ const HeroList = ({ publisher }) => {
   }, [publisher]);
 
   return (
-    <div className='row'>
+    <div className='row animate__animated animate__fadeIn'>
       {heroes.map((hero) => (
         <HeroCard
           key={hero.id}
