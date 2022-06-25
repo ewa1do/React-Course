@@ -9,14 +9,24 @@ import LoginScreen from '../components/login/LoginScreen';
 
 import DashboardRoutes from './DashboardRoutes';
 import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 const AppRouter = () => {
   return (
     <Router>
       <Routes>
-        <Route
+        {/* <Route
           path='/login'
           element={<LoginScreen />}
+        /> */}
+
+        <Route
+          path='/login'
+          element={
+            <PublicRoute>
+              <LoginScreen />
+            </PublicRoute>
+          }
         />
 
         <Route
