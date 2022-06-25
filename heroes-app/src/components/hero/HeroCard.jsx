@@ -11,7 +11,7 @@ const HeroCard = ({
   const imagePath = `/src/assets/${id}.jpg`;
 
   return (
-    <div className='col-2'>
+    <div className='col animate__animated animate__fadeIn'>
       <div className='card'>
         <div className='row no-gutters'>
           <div className='col-8'>
