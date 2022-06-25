@@ -8,6 +8,7 @@ import {
 import LoginScreen from '../components/login/LoginScreen';
 
 import DashboardRoutes from './DashboardRoutes';
+import PrivateRoute from './PrivateRoute';
 
 const AppRouter = () => {
   return (
@@ -20,8 +21,17 @@ const AppRouter = () => {
 
         <Route
           path='/*'
-          element={<DashboardRoutes />}
+          element={
+            <PrivateRoute>
+              <DashboardRoutes />
+            </PrivateRoute>
+          }
         />
+
+        {/* <Route
+          path='/*'
+          element={<DashboardRoutes />}
+        /> */}
       </Routes>
     </Router>
   );
