@@ -1,3 +1,6 @@
+import { AppRouter } from './routers/AppRouter';
+import './styles/styles.scss';
+
 export const JournalApp = () => {
-  return <div>JournalApp</div>;
+  return <AppRouter />;
 };
