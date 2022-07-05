@@ -1,0 +1,17 @@
+.nothing__main-content {
+  align-items: center;
+  background-image: linear-gradient(
+    to right bottom,
+    $primary,
+    darken($color: $primary, $amount: 20)
+  );
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+
+  p {
+    text-align: center;
+  }
+}
