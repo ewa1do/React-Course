@@ -9,6 +9,10 @@
   &:focus {
     outline: none;
   }
+
+  &:hover {
+    color: darken($color: #fff, $amount: 15);
+  }
 }
 
 .btn-primary {
