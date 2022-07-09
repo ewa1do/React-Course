@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   signInWithEmailAndPassword,
+  signOut,
 } from '../firebase/firebaseConfig.js';
 
 import { types } from '../types/types';
@@ -86,6 +87,14 @@ export const startGoogleLogin = () => {
   // };
 };
 
+export const startLogoutFromFirebase = () => {
+  return async (dispatch) => {
+    await signOut(auth);
+
+    dispatch(logout());
+  };
+};
+
 export const login = (uid, displayName) => {
   return {
     type: types.login,
@@ -93,5 +102,11 @@ export const login = (uid, displayName) => {
       uid,
       displayName,
     },
+  };
+};
+
+export const logout = () => {
+  return {
+    type: types.logout,
   };
 };
