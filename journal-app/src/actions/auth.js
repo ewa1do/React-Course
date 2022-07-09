@@ -8,10 +8,13 @@ import {
 } from '../firebase/firebaseConfig.js';
 
 import { types } from '../types/types';
+import { startLoading, finishLoading } from './ui';
 
 export const startLoginEmailAndPassword = (email, password) => {
   return async (dispatch) => {
     try {
+      dispatch(startLoading());
+
       const { user } = await signInWithEmailAndPassword(
         auth,
         email,
@@ -19,8 +22,11 @@ export const startLoginEmailAndPassword = (email, password) => {
       );
 
       dispatch(login(user.uid, user.displayName));
+
+      dispatch(finishLoading());
     } catch (error) {
       console.log(error);
+      dispatch(finishLoading());
     }
   };
 };
