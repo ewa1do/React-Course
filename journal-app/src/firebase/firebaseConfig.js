@@ -7,6 +7,7 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
   updateProfile,
+  signInWithEmailAndPassword,
 } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -32,4 +33,5 @@ export {
   signInWithPopup,
   createUserWithEmailAndPassword,
   updateProfile,
+  signInWithEmailAndPassword,
 };

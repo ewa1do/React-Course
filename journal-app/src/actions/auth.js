@@ -4,15 +4,24 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
   updateProfile,
+  signInWithEmailAndPassword,
 } from '../firebase/firebaseConfig.js';
 
 import { types } from '../types/types';
 
-export const startLoginEmailAndPassword = () => {
-  return (dispatch) => {
-    setTimeout(() => {
-      dispatch(login(123, 'Peter'));
-    }, 3500);
+export const startLoginEmailAndPassword = (email, password) => {
+  return async (dispatch) => {
+    try {
+      const { user } = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      dispatch(login(user.uid, user.displayName));
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
