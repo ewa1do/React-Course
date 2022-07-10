@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import {
   auth,
   googleAuthProvider,
@@ -28,6 +29,7 @@ export const startLoginEmailAndPassword = (email, password) => {
     } catch (error) {
       console.log(error);
       dispatch(finishLoading());
+      Swal.fire('Error', error.message, 'error');
     }
   };
 };
@@ -52,6 +54,7 @@ export const startRegisterWithEmailPasswordAndName = (
       dispatch(login(user.uid, user.displayName));
     } catch (e) {
       console.log(e);
+      Swal.fire('Error', e.message, 'error');
     }
   };
   // createUserWithEmailAndPassword(auth, email, password)
