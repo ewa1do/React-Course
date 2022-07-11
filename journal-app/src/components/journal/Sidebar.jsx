@@ -5,6 +5,7 @@ import {
   startLogoutFromFirebase,
   logout,
 } from '../../actions/auth';
+import { startNewNote } from '../../actions/notes';
 
 export const Sidebar = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,10 @@ export const Sidebar = () => {
   const handleLogout = () => {
     // dispatch(logout());
     dispatch(startLogoutFromFirebase());
+  };
+
+  const handleAddNewEntry = () => {
+    dispatch(startNewNote());
   };
 
   return (
@@ -31,7 +36,10 @@ export const Sidebar = () => {
         </button>
       </div>
 
-      <div className='journal__new-entry'>
+      <div
+        className='journal__new-entry'
+        onClick={handleAddNewEntry}
+      >
         <i className='far fa-calendar-plus fa-5x'></i>
         <p className='mt-5'>New entry</p>
       </div>

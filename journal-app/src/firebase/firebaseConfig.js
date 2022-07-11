@@ -1,5 +1,10 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  setDoc,
+} from 'firebase/firestore';
 
 import {
   getAuth,
@@ -31,6 +36,7 @@ const db = getFirestore(app);
 
 export {
   auth,
+  db,
   googleAuthProvider,
   signInWithPopup,
   createUserWithEmailAndPassword,
@@ -38,4 +44,7 @@ export {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  collection,
+  addDoc,
+  setDoc,
 };
