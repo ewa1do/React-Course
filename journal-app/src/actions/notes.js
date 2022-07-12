@@ -1,3 +1,4 @@
+import { doc, updateDoc } from 'firebase/firestore';
 import {
   db,
   collection,
@@ -49,5 +50,20 @@ export const setNotes = (notes) => {
   return {
     type: types.notesLoad,
     payload: notes,
+  };
+};
+
+export const startSaveNote = (note) => {
+  return async (dispatch, getState) => {
+    const { uid } = getState().auth;
+
+    if (!note.url) delete note.url;
+
+    const noteToFirestore = { ...note };
+    delete noteToFirestore.id;
+
+    const docRef = doc(db, `${uid}/journal/notes/${note.id}`);
+
+    await updateDoc(docRef, noteToFirestore);
   };
 };
