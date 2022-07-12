@@ -6,7 +6,6 @@ export const NotesAppBar = () => {
   const { active } = useSelector((state) => state.notes);
 
   const handleSavingNoteOnClick = () => {
-    console.log(active);
     dispatch(startSaveNote(active));
   };
 
