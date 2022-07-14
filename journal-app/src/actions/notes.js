@@ -94,11 +94,41 @@ export const startUploadingFile = (file) => {
   return async (dispatch, getState) => {
     const { active: activeNote } = getState().notes;
 
-    // console.log(file);
     // console.log(activeNote);
+
+    // const note = Object.assign({}, activeNote);
+
+    // console.log(note === activeNote);
+
+    // Swal.fire({
+    //   title: 'Uploading...',
+    //   text: 'Please Wait...',
+    //   allowOutsideClick: false,
+    //   onBeforeOpen: () => {
+    //     Swal.showLoading();
+    //   },
+    // });
 
     const fileUrl = await fileUpload(file);
 
-    console.log(fileUrl);
+    console.log('original', fileUrl);
+
+    const fileUrlCopy = Object.assign({}, fileUrl);
+
+    console.log('copy', fileUrlCopy);
+
+    console.log(fileUrl === fileUrlCopy);
+
+    activeNote.url = fileUrlCopy.secure_url;
+
+    console.log(activeNote);
+
+    // TODO: find whats the problem with the dispatch
+
+    // console.log(activeNote);
+
+    // dispatch(startSaveNote(activeNote));
+
+    // Swal.close();
   };
 };
