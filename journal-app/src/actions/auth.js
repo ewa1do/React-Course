@@ -10,6 +10,7 @@ import {
 } from '../firebase/firebaseConfig.js';
 
 import { types } from '../types/types';
+import { notesLogout } from './notes.js';
 import { startLoading, finishLoading } from './ui';
 
 export const startLoginEmailAndPassword = (email, password) => {
@@ -95,6 +96,7 @@ export const startLogoutFromFirebase = () => {
     await signOut(auth);
 
     dispatch(logout());
+    dispatch(notesLogout());
   };
 };
 
