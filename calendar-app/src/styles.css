@@ -65,3 +65,14 @@ body {
   display: flex;
   border: 0 solid gray !important;
 }
+
+/* FABS */
+
+.fab {
+  border-radius: 50%;
+  bottom: 25px;
+  font-size: 30px;
+  padding: 20px;
+  position: fixed;
+  right: 25px;
+}
