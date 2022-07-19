@@ -1,16 +1,18 @@
+require('dotenv').config();
 const express = require('express');
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.status(200).json({
-    ok: true,
-  });
-});
+app.use(express.static(`${__dirname}/public/`));
 
-const PORT = (process.env.PORT = 4000);
-const HOST_DEV = (process.env.HOST_DEV = '127.0.0.1');
+// app.get('/', (req, res) => {
+//   res.status(200).json({
+//     ok: true,
+//   });
+// });
 
-app.listen(PORT, HOST_DEV, () => {
+const { PORT } = process.env;
+
+app.listen(PORT, '127.0.0.1', () => {
   console.log('Server Running on port: ' + PORT);
 });
