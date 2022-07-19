@@ -19,3 +19,10 @@ export const eventClearActiveEvent = () => {
     type: types.eventClearActiveNote,
   };
 };
+
+export const eventUpdated = (event) => {
+  return {
+    type: types.eventUpdated,
+    payload: event,
+  };
+};

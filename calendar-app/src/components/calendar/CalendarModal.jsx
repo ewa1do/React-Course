@@ -9,6 +9,7 @@ import { uiCloseModal } from '../../actions/ui';
 import {
   eventAddNew,
   eventClearActiveEvent,
+  eventUpdated,
 } from '../../actions/events';
 
 const customStyles = {
@@ -105,18 +106,20 @@ export const CalendarModal = () => {
       return setTitleValid(false);
     }
 
-    // TODO: Realizar grabacion en DB
-    // console.log(formValues);
-    dispatch(
-      eventAddNew({
-        ...formValues,
-        id: new Date().getTime(),
-        user: {
-          _id: '123',
-          name: 'Ezio',
-        },
-      })
-    );
+    if (activeEvent) {
+      dispatch(eventUpdated(formValues));
+    } else {
+      dispatch(
+        eventAddNew({
+          ...formValues,
+          id: new Date().getTime(),
+          user: {
+            _id: '123',
+            name: 'Ezio',
+          },
+        })
+      );
+    }
 
     setTitleValid(true);
     closeModal();
