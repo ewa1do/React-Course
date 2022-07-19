@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 
@@ -19,19 +19,19 @@ moment.locale('es');
 
 const localizer = momentLocalizer(moment);
 
-const events = [
-  {
-    title: 'Boss birthday',
-    start: moment().toDate(),
-    end: moment().add(2, 'hours').toDate(),
-    bgcolor: '#fafafa',
-    notes: 'Comprar el pastel',
-    user: {
-      _id: 123,
-      name: 'Ezio',
-    },
-  },
-];
+// const events = [
+// {
+//   title: 'Boss birthday',
+//   start: moment().toDate(),
+//   end: moment().add(2, 'hours').toDate(),
+//   bgcolor: '#fafafa',
+//   notes: 'Comprar el pastel',
+//   user: {
+//     _id: 123,
+//     name: 'Ezio',
+//   },
+// },
+// ];
 
 const eventStyleGetter = (event, start, end, isSelected) => {
   const style = {
@@ -50,16 +50,15 @@ const eventStyleGetter = (event, start, end, isSelected) => {
 export const CalendarScreen = () => {
   const dispatch = useDispatch();
 
+  const { events } = useSelector((state) => state.calendar);
+
   const [lastView, setLastView] = useState(
     localStorage.getItem('last-view') || 'month'
   );
 
   const onDoubleClick = () => dispatch(uiOpenModal());
 
-  const onSelectEvent = (e) => {
-    dispatch(eventSetActive(e));
-    dispatch(uiOpenModal());
-  };
+  const onSelectEvent = (e) => dispatch(eventSetActive(e));
 
   const onViewChange = (e) => {
     setLastView(e);
