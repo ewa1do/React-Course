@@ -1,17 +1,15 @@
-require('dotenv').config();
 const express = require('express');
+require('dotenv').config();
 
 const authRouter = require('./routes/auth');
 
 const app = express();
 
 app.use(express.static(`${__dirname}/public/`));
+app.use(express.json());
 
 // Rutas
-// TODO: auth// crear, login, token renew
-// app.use('/api/auth', require('./routes/auth'));
 app.use('/api/auth', authRouter);
-
 // TODO: CRUD: Eventos
 
 const { PORT } = process.env;
