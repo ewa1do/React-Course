@@ -12,9 +12,9 @@ app.use(express.json());
 app.use('/api/auth', authRouter);
 // TODO: CRUD: Eventos
 
-const { PORT } = process.env;
+const { PORT, HOST_DEV } = process.env;
 
-app.listen(PORT, '127.0.0.1', () => {
+app.listen(PORT, HOST_DEV, () => {
   console.log('Server Running on port: ' + PORT);
 });
 
