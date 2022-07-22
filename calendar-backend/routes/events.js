@@ -6,6 +6,7 @@ const { validateJWT } = require('../middlewares/validateJWT');
 const isDate = require('../helpers/isDate');
 const {
   getEvent,
+  getOneEvent,
   createEvent,
   updateEvent,
   deleteEvent,
@@ -29,6 +30,11 @@ router
     createEvent
   );
 
-router.route('/:id').put(updateEvent).delete(deleteEvent);
+// prettier-ignore
+router
+  .route('/:id')
+  .get(getOneEvent)
+  .put(updateEvent)
+  .delete(deleteEvent);
 
 module.exports = router;
