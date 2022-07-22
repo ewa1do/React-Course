@@ -4,6 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const authRouter = require('./routes/auth');
+const eventRouter = require('./routes/events');
 
 // Crear el servidor de express
 const app = express();
@@ -22,7 +23,7 @@ app.use(express.json());
 
 // Rutas
 app.use('/api/auth', authRouter);
-// TODO: CRUD: Eventos
+app.use('/api/events', eventRouter);
 
 const { PORT, HOST_DEV } = process.env;
 
