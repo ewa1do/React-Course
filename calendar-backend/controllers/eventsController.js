@@ -37,9 +37,9 @@ const getOneEvent = async (req = request, res = response) => {
 
   try {
     if (!id) {
-      return res.status(400).json({
+      return res.status(404).json({
         ok: false,
-        msg: 'El evento no existe',
+        msg: 'No se puede encontrar el evento',
       });
     }
 
@@ -80,18 +80,80 @@ const createEvent = async (req, res = response) => {
   }
 };
 
-const updateEvent = (req, res = response) => {
-  res.status(202).json({
-    ok: true,
-    msg: 'updateEvent',
-  });
+const updateEvent = async (req, res = response) => {
+  const { id } = req.params;
+  const { uid } = req;
+
+  try {
+    const event = await Event.findById(id);
+
+    if (!event) {
+      return res.status(404).json({
+        ok: true,
+        msg: 'No existe un evento con ese id',
+      });
+    }
+
+    if (event.user.toString() !== uid) {
+      return res.status(401).json({
+        ok: false,
+        msg: 'No tiene privilegio de editar este evento',
+      });
+    }
+
+    const newEvent = { ...req.body, user: uid };
+
+    const eventUpdated = await Event.findOneAndUpdate(id, newEvent, {
+      new: true,
+      runValidators: true,
+    });
+
+    res.status(202).json({
+      ok: true,
+      event: eventUpdated,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      msg: 'Hable con el administrador',
+    });
+  }
 };
 
-const deleteEvent = (req, res = response) => {
-  res.status(202).json({
-    ok: true,
-    msg: 'deleteEvent',
-  });
+const deleteEvent = async (req, res = response) => {
+  const { id } = req.params;
+  const { uid } = req;
+
+  try {
+    const event = await Event.findById(id);
+
+    if (!event) {
+      return res.status(404).json({
+        ok: true,
+        msg: 'No se puede encontrar el evento',
+      });
+    }
+
+    if (event.user.toString() !== uid) {
+      return res.status(401).json({
+        ok: false,
+        msg: 'No tiene privilegio de editar este evento',
+      });
+    }
+
+    await Event.findByIdAndDelete(id);
+
+    res.status(204).json({
+      ok: true,
+      msg: 'Event Deleted',
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      ok: false,
+      msg: 'Hable con el administrador',
+    });
+  }
 };
 
 module.exports = {
