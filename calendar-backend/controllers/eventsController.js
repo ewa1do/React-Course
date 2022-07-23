@@ -9,27 +9,12 @@ const Event = require('../models/EventModel');
 const getEvent = async (req, res = response) => {
   const allEvents = await Event.find({}).populate('user', 'name');
 
-  try {
-    if (!allEvents) {
-      return res.json({
-        ok: false,
-        msg: 'No hay informacion de los eventos',
-      });
-    }
-
-    res.status(200).json({
-      ok: true,
-      events: {
-        allEvents,
-      },
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      ok: false,
-      msg: 'Hable con el administrador',
-    });
-  }
+  res.status(200).json({
+    ok: true,
+    events: {
+      allEvents,
+    },
+  });
 };
 
 const getOneEvent = async (req = request, res = response) => {
