@@ -25,9 +25,11 @@ app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/events', eventRouter);
 
-const { PORT, HOST_DEV } = process.env;
+let PORT = process.env.PORT || 4000;
 
-app.listen(PORT, HOST_DEV, () => {
+// const { PORT, HOST_DEV } = process.env;
+
+app.listen(PORT, () => {
   console.log('Server Running on port: ' + PORT);
 });
 
