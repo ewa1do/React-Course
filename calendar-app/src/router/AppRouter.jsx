@@ -11,7 +11,7 @@ import { LoginScreen } from '../components/auth/LoginScreen';
 import { CalendarScreen } from '../components/calendar/CalendarScreen';
 import { startChecking } from '../actions/auth';
 import { PublicRoute } from './PublicRoute';
-import { PrivateRoute } from './PriivateRoute';
+import { PrivateRoute } from './PrivateRoute';
 
 export const AppRouter = () => {
   const dispatch = useDispatch();

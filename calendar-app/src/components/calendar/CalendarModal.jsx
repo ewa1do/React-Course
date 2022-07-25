@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 
 import { uiCloseModal } from '../../actions/ui';
 import {
-  eventAddNew,
+  eventStartAddNew,
   eventClearActiveEvent,
   eventUpdated,
 } from '../../actions/events';
@@ -90,6 +90,8 @@ export const CalendarModal = () => {
   const handleSubmitForm = (e) => {
     e.preventDefault();
 
+    formValues.title = formValues.title.join(' ') || '';
+
     const momentStart = moment(start);
     const momentEnd = moment(end);
 
@@ -111,16 +113,7 @@ export const CalendarModal = () => {
     if (activeEvent) {
       dispatch(eventUpdated(formValues));
     } else {
-      dispatch(
-        eventAddNew({
-          ...formValues,
-          id: new Date().getTime(),
-          user: {
-            _id: '123',
-            name: 'Ezio',
-          },
-        })
-      );
+      dispatch(eventStartAddNew(formValues));
     }
 
     setTitleValid(true);
