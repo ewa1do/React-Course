@@ -91,6 +91,7 @@ export const CalendarModal = () => {
     e.preventDefault();
 
     formValues.title = formValues.title.join(' ') || '';
+    formValues.notes = formValues.notes.join(' ') || '';
 
     const momentStart = moment(start);
     const momentEnd = moment(end);

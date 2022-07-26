@@ -24,23 +24,10 @@ moment.locale('es');
 
 const localizer = momentLocalizer(moment);
 
-const eventStyleGetter = (event, start, end, isSelected) => {
-  const style = {
-    backgroundColor: '#367CF7',
-    borderRadius: '0px',
-    opacity: 0.8,
-    display: 'block',
-    color: '#fff',
-  };
-
-  return {
-    style,
-  };
-};
-
 export const CalendarScreen = () => {
   const dispatch = useDispatch();
   const { activeEvent } = useSelector((state) => state.calendar);
+  const { uid } = useSelector((state) => state.auth);
 
   const { events } = useSelector((state) => state.calendar);
 
@@ -64,6 +51,22 @@ export const CalendarScreen = () => {
   const onSelectSlot = (e) => {
     // console.log(e);
     dispatch(eventClearActiveEvent());
+  };
+
+  const eventStyleGetter = (event, start, end, isSelected) => {
+    console.log(event);
+
+    const style = {
+      backgroundColor: event.user._id === uid ? '#367CF7' : '#465660',
+      borderRadius: '0px',
+      opacity: 0.8,
+      display: 'block',
+      color: '#fff',
+    };
+
+    return {
+      style,
+    };
   };
 
   return (
